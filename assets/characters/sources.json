@@ -1,0 +1,67 @@
+{
+  "sasha": {
+    "image": "https://maohgakuin.com/1st/assets/img/chara/img_sasha.png",
+    "source": "https://maohgakuin.com/1st/character/?chara=sasha",
+    "file": "assets/characters/sasha.png"
+  },
+  "tsubaki": {
+    "image": "https://kunoichi-tsubaki.com/assets/img/character/chara_01-01tsubaki_01.png",
+    "source": "https://kunoichi-tsubaki.com/character/detail.html",
+    "file": "assets/characters/tsubaki.png"
+  },
+  "yuyu": {
+    "image": "https://www.assaultlily.com/wp/wp-content/uploads/2019/03/02chara-YR02.jpg",
+    "source": "https://www.assaultlily.com/character/221.html/",
+    "file": "assets/characters/yuyu.jpg"
+  },
+  "rio": {
+    "image": "https://anime.shinepost.jp/wp/wp-content/themes/shinepost-anime2/_assets/images/pages/char/detail/tings/rio_idol@2x.png",
+    "source": "https://anime.shinepost.jp/character/tings/",
+    "file": "assets/characters/rio.png"
+  },
+  "cheval": {
+    "image": "https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/7996af1196e845ee94e6d967c3ec0b2e/chevalgrand_02.png",
+    "source": "https://umamusume.jp/character/chevalgrand",
+    "file": "assets/characters/cheval.png"
+  },
+  "nana": {
+    "image": "https://www.egatae.com/dist/img/character/character1/stand.png",
+    "source": "https://www.egatae.com/character/",
+    "file": "assets/characters/nana.png"
+  },
+  "kaguya": {
+    "image": "https://www.cho-kaguyahime.com/assets/img/character/character_0main.png",
+    "source": "https://www.cho-kaguyahime.com/",
+    "file": "assets/characters/kaguya.png"
+  },
+  "hayate": {
+    "image": "https://hpgames.jp/dolphin-wave/assets/img/chara/hayate-souma/img_chara.png",
+    "source": "https://hpgames.jp/dolphin-wave/character/kazami/hayate-souma/",
+    "file": "assets/characters/hayate.png"
+  },
+  "careena": {
+    "image": "https://www.jp.square-enix.com/seiken_vom/images/chara/chara3_main.png",
+    "source": "https://www.jp.square-enix.com/seiken_vom/chara.html",
+    "file": "assets/characters/careena.png"
+  },
+  "liza": {
+    "image": "https://tc-animate.techorus-cdn.com/resize_image/resize_image.php?image=10695955_1_1732626368.jpg",
+    "source": "https://www.animate-onlineshop.jp/pd/3010616/",
+    "file": "assets/characters/liza.jpg"
+  },
+  "himeko": {
+    "image": "https://www.sanrio.co.jp/wp-content/uploads/2022/06/mv-mashimahimeko.png",
+    "source": "https://www.sanrio.co.jp/characters/mashimahimeko/",
+    "file": "assets/characters/himeko.png"
+  },
+  "musubu": {
+    "image": "https://eeo.today/media/wp-content/uploads/2024/09/20240925_utamille_PR_03-768x1024.jpg",
+    "source": "https://eeo.today/media/2024/09/25/172931/",
+    "file": "assets/characters/musubu.jpg"
+  },
+  "kazusa": {
+    "image": "https://pbs.twimg.com/media/FapyumeaMAA97bU.jpg",
+    "source": "https://x.com/Blue_ArchiveJP/status/1561186369313001473",
+    "file": "assets/characters/kazusa.jpg"
+  }
+}

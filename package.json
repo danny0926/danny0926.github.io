@@ -1,0 +1,16 @@
+{
+  "name": "danny-local-design-gallery",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build:templates": "node build-templates.mjs",
+    "build:wafer": "node build-wafer.mjs"
+  },
+  "dependencies": {
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.9"
+  }
+}

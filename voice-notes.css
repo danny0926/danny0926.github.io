@@ -1,0 +1,4 @@
+.personal-note-copy p,.arcade-copy .fan-note{font-size:17px;line-height:2;margin:0 0 24px}
+.voice-personal-closing{max-width:740px;margin:48px auto 12px;padding-top:28px;border-top:1px solid var(--line);font-size:22px;line-height:1.9;color:var(--accent)}
+.voice-role>p:not(.role-work){font-size:16px;line-height:1.9}
+@media(max-width:700px){.voice-personal-closing{font-size:19px;margin-top:30px}.personal-note-copy p,.arcade-copy .fan-note{font-size:16px}}

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1296 300" width="100%" role="img" aria-label="各配置的 GPU 記憶體峰值與 24GB 容量上限比較">
+<line x1="300.0" y1="30" x2="300.0" y2="242" stroke="#dbe4e9" stroke-width="1"/>
+<text x="300.0" y="263" text-anchor="middle" font-size="15" fill="#637582">0</text>
+<line x1="448.0" y1="30" x2="448.0" y2="242" stroke="#dbe4e9" stroke-width="1"/>
+<text x="448.0" y="263" text-anchor="middle" font-size="15" fill="#637582">4</text>
+<line x1="596.0" y1="30" x2="596.0" y2="242" stroke="#dbe4e9" stroke-width="1"/>
+<text x="596.0" y="263" text-anchor="middle" font-size="15" fill="#637582">8</text>
+<line x1="744.0" y1="30" x2="744.0" y2="242" stroke="#dbe4e9" stroke-width="1"/>
+<text x="744.0" y="263" text-anchor="middle" font-size="15" fill="#637582">12</text>
+<line x1="892.0" y1="30" x2="892.0" y2="242" stroke="#dbe4e9" stroke-width="1"/>
+<text x="892.0" y="263" text-anchor="middle" font-size="15" fill="#637582">16</text>
+<line x1="1040.0" y1="30" x2="1040.0" y2="242" stroke="#dbe4e9" stroke-width="1"/>
+<text x="1040.0" y="263" text-anchor="middle" font-size="15" fill="#637582">20</text>
+<line x1="1188.0" y1="30" x2="1188.0" y2="242" stroke="#dbe4e9" stroke-width="1"/>
+<text x="1188.0" y="263" text-anchor="middle" font-size="15" fill="#637582">24</text>
+<text x="781" y="292" text-anchor="middle" font-size="15" fill="#637582">GPU 記憶體峰值（GiB）</text>
+<text x="284" y="57.2" text-anchor="end" font-size="17" fill="#637582" font-weight="400">舊架構　生成＋訓練，兩份 fp16</text>
+<rect x="300" y="36.2" width="847.7" height="30" rx="3" fill="#f3e6d5" stroke="#b26a00" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="1133.7" y="57.2" text-anchor="end" font-size="17" font-weight="700" fill="#b26a00">OOM</text>
+<text x="284" y="99.6" text-anchor="end" font-size="17" fill="#637582" font-weight="400">舊架構　生成＋訓練，兩份 8-bit</text>
+<rect x="300" y="78.6" width="846.9" height="30" rx="3" fill="#f3e6d5" stroke="#b26a00" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="1132.9" y="99.6" text-anchor="end" font-size="17" font-weight="700" fill="#b26a00">OOM</text>
+<text x="284" y="142.0" text-anchor="end" font-size="17" fill="#637582" font-weight="400">舊架構　生成＋訓練，兩份 4-bit</text>
+<rect x="300" y="121.0" width="696.3" height="30" rx="3" fill="#8b9aa5"/>
+<text x="1006.3" y="142.0" font-size="17" font-weight="700" fill="#637582">18.82 GiB</text>
+<text x="284" y="184.4" text-anchor="end" font-size="17" fill="#18334a" font-weight="700">新架構　共用一份 fp16</text>
+<rect x="300" y="163.4" width="796.2" height="30" rx="3" fill="#007d79"/>
+<text x="1084.2" y="184.4" text-anchor="end" font-size="17" font-weight="700" fill="#ffffff">21.52 GiB</text>
+<text x="284" y="226.8" text-anchor="end" font-size="17" fill="#18334a" font-weight="700">新架構　共用一份 4-bit</text>
+<rect x="300" y="205.8" width="504.3" height="30" rx="3" fill="#007d79"/>
+<text x="814.3" y="226.8" font-size="17" font-weight="700" fill="#18334a">13.63 GiB</text>
+<line x1="1169.9" y1="24" x2="1169.9" y2="246" stroke="#18334a" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="1161.9" y="20" text-anchor="end" font-size="15" font-weight="700" fill="#18334a">RTX 4090 可用上限 23.51 GiB</text>
+</svg>

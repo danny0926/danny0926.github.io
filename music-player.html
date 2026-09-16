@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Danny / Music Player</title><style>
+body{margin:0;background:#0f1113;color:#e9edf0;font-family:system-ui,sans-serif;padding:22px}header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}h1{font-size:15px;letter-spacing:2px;color:#e7bf75;margin:0}a{color:#9aa8b2;font-size:12px}#video{width:100%;aspect-ratio:16/9}#video iframe{width:100%;height:100%}h2{font-size:20px;margin:16px 0 5px}p{font-size:12px;color:#9aa8b2}button{background:#1b2026;border:1px solid #2a333b;color:#e7bf75;padding:9px 16px;cursor:pointer;margin-right:8px}#controls{margin-top:14px}</style></head><body>
+<header><h1>DANNY / MUSIC</h1><a href="jpop.html" target="_blank" rel="noopener">歌曲與故事 ↗</a></header>
+<div id="video"></div><h2 id="title">Pieces</h2><p id="artist">星街すいせい</p><div id="controls"><button data-action="previous" aria-label="上一首">‹</button><button data-action="toggle">播放 / 暫停</button><button data-action="next" aria-label="下一首">›</button></div><p id="status" aria-live="polite">正在準備音樂；若未自動播放，請按播放。</p>
+<script src="music-window.js"></script><script src="https://www.youtube.com/iframe_api"></script></body></html>

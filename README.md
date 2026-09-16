@@ -2,6 +2,8 @@
 
 個人網站、履歷、夏吉ゆうこ聲優手帖與 J-POP 音樂頁。原生 HTML、CSS、JavaScript，不需要安裝套件。
 
+目前僅在本機開發與預覽；不再部署至 GPT／Sites 網域。
+
 ## 本機預覽
 
 在此目錄執行：
@@ -26,7 +28,7 @@ python -m http.server 8767 --bind 127.0.0.1
 
 網站以朋友網站的終端機／ASCII 氛圍為視覺參考，程式碼重新製作。
 
-執行 `python build_static.py` 將網站檔案同步到 Sites 使用的 `dist/`。來源檔保留在根目錄，部署輸出僅包含網站與素材。
+執行 `python build_static.py` 可將網站檔案同步到本機 `dist/`。來源檔保留在根目錄；不會上傳或部署。
 
 ## 素材與資料來源
 
@@ -39,3 +41,10 @@ python -m http.server 8767 --bind 127.0.0.1
 - J-POP 文字封面為網站原創排版，並非唱片原封面。歌曲卡片連到官方作品頁。
 
 影片與外部音樂入口需要網路。複製信箱功能在 localhost／HTTPS 可使用，瀏覽器不支援時提供提示。
+
+
+## GitHub Pages
+
+https://danny0926.github.io/
+
+Push to main automatically builds and deploys the static site through .github/workflows/pages.yml.
