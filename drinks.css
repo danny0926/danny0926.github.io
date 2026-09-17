@@ -4,3 +4,4 @@
 
 .bottle-grid .bottle-body{min-height:155px}
 @media(max-width:560px){.bottle-grid .bottle-body{min-height:0}}
+.personal-cabinet{margin:0 0 40px;border:1px solid var(--line);background:#211a13;overflow:hidden;border-radius:4px}.personal-cabinet img{display:block;width:100%;height:auto}.personal-cabinet figcaption{display:flex;justify-content:space-between;gap:12px;padding:13px 18px;background:var(--panel);color:var(--amber);font:11px var(--mono);letter-spacing:1px}.personal-cabinet figcaption span{color:var(--muted);letter-spacing:0}@media(max-width:560px){.personal-cabinet{margin-bottom:28px}.personal-cabinet figcaption{font-size:10px;padding:12px;letter-spacing:0}}
