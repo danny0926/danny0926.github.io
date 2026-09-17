@@ -1,5 +1,4 @@
 (() => {
-  const overview=document.querySelector('.cabinet-overview');if(overview){const compact=matchMedia('(max-width:750px)');const sync=()=>overview.open=!compact.matches;sync();compact.addEventListener('change',sync);}
   const labels = {sake:['香氣','甜感','酸感','旨味','酒體','餘韻'],beer:['麥芽','啤酒花','苦味','酒體','氣泡'],whisky:['果香','麥芽','木質','煙燻','香料'],baijiu:['香氣','甜感','酒體','酒精刺激','餘韻'],awamori:['香氣','甜感','酒體','酒精刺激','餘韻']};
   window.drinkAxes = labels;
   function node(tag, text, cls) {const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;}
