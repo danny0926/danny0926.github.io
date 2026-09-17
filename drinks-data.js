@@ -11,7 +11,7 @@
   }
   window.renderDrinkRadar = radar;
   if(!document.querySelector('.drink-categories'))return;
-  fetch('data/drinks.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(items=>{
+  fetch('data/drinks.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(window.renderDrinks=items=>{
     window.drinksCollection=items;
     Object.keys(labels).forEach(category=>{
       const section=document.getElementById(category),old=section.querySelector('.bottle-grid,.empty-shelf');old?.remove();const group=items.filter(x=>x.category===category);
