@@ -8,7 +8,9 @@
     "image": "assets/drinks/dassai23.jpg",
     "source": "https://dassai.com/product/main/23.html",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "使用山田錦，精米步合 23%。\n酒藏描述為華麗香氣與如蜂蜜般的甜感。",
+    "officialSource": "https://dassai.com/product/main/23.html"
   },
   {
     "id": "sake-2",
@@ -19,7 +21,9 @@
     "image": "assets/drinks/dassai-hayata.jpg",
     "source": "https://dassai.com/product/main/hayata.html",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "以取得專利的技術，呈現剛榨取清酒的新鮮風味。\n二割三分系列的純米大吟釀。",
+    "officialSource": "https://dassai.com/product/main/hayata.html"
   },
   {
     "id": "sake-3",
@@ -30,7 +34,9 @@
     "image": "assets/drinks/dassai39.jpg",
     "source": "https://dassai.com/product/main/39.html",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "酒藏描述為華麗香氣、平衡的甜感。\n飲後有持續的餘韻。",
+    "officialSource": "https://dassai.com/product/main/39.html"
   },
   {
     "id": "sake-4",
@@ -41,7 +47,10 @@
     "image": "assets/drinks/shiro-uguisu.jpg",
     "source": "https://onosaketen.jp/view/item/000000000705",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "福岡縣山口酒造場，以山田錦釀製。\n以袋吊雫搾方式取酒，通路形容口感細緻、透明。",
+    "officialSource": "https://onosaketen.jp/view/item/000000000705",
+    "informationLabel": "PRODUCT NOTES / 通路資訊摘要"
   },
   {
     "id": "sake-5",
@@ -52,7 +61,9 @@
     "image": "assets/drinks/kohka.webp",
     "source": "https://kikubijin.co.jp/sake/kohka/",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "酒藏定位為品牌頂級酒款。\n描述為馥郁香氣、豐富甜感與乾淨且持續的餘韻。",
+    "officialSource": "https://kikubijin.co.jp/sake/kohka/"
   },
   {
     "id": "sake-6",
@@ -63,7 +74,9 @@
     "image": "assets/drinks/kitaya.jpg",
     "source": "https://kitaya.biz/shop/products/12735",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "使用糸島產山田錦。\n2013 年獲 IWC 日本酒部門 Champion Sake。",
+    "officialSource": "https://kitaya.biz/shop/products/12735"
   },
   {
     "id": "sake-7",
@@ -74,7 +87,9 @@
     "image": "assets/drinks/tamanohikari-black.jpg",
     "source": "https://ec.tamanohikari.co.jp/products/blacklabel",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "使用 100% 雄町米，精米步合 35%。\n官方標示酒精濃度為 15%。",
+    "officialSource": "https://ec.tamanohikari.co.jp/products/blacklabel"
   },
   {
     "id": "sake-8",
@@ -85,7 +100,9 @@
     "image": "assets/drinks/tatenokawa18.png",
     "source": "https://shop.tatenokawa.com/shop/products/4511802017807",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "使用雪女神米，精米步合 18%。\n酒藏強調細緻風味與原料米旨味的呈現。",
+    "officialSource": "https://shop.tatenokawa.com/shop/products/4511802017807"
   },
   {
     "id": "baijiu-1",
@@ -96,7 +113,10 @@
     "image": "assets/drinks/shede-taian.jpg",
     "source": "https://www.dutyzero.com.hk/item/p15772999",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "香港機場免稅通路的泰安古釀版本。\n通路標示為 52 度、500 毫升。",
+    "officialSource": "https://www.dutyzero.com.hk/item/p15772999",
+    "informationLabel": "PRODUCT NOTES / 通路資訊摘要"
   },
   {
     "id": "awamori-1",
@@ -107,7 +127,9 @@
     "image": "assets/drinks/miyanotsuru.jpg",
     "source": "https://store.shopping.yahoo.co.jp/awamoriya/302.html",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "石垣島宮良的仲間酒造釀製。\n酒造描述為芳醇香氣與柔和甜感。",
+    "officialSource": "https://miyanotsuru.com/"
   },
   {
     "id": "awamori-2",
@@ -118,7 +140,9 @@
     "image": "assets/drinks/zanpa-blue.png",
     "source": "https://www.zanpa.co.jp/%E8%A4%87%E8%A3%BD-zanpa-white-new-1",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "調和 60% 的五年古酒，酒精濃度 30%。\n官方描述為甕貯藏風味與熟成帶來的香氣、厚度。\n藍色酒瓶以沖繩的海與天空為設計意象。",
+    "officialSource": "https://www.zanpa.co.jp/%E8%A4%87%E8%A3%BD-zanpa-white-new-1"
   },
   {
     "id": "beer-1",
@@ -129,6 +153,8 @@
     "image": "assets/drinks/inedit.png",
     "source": "https://www.damm.com/en/beers/inedit",
     "notes": "",
-    "scores": null
+    "scores": null,
+    "officialSummary": "由 Damm 釀酒團隊與 Ferran Adrià、elBulli 侍酒師團隊共同開發。\n結合大麥麥芽與小麥啤酒，加入芫荽、甘草與橙皮。\n定位為搭配餐食的啤酒，酒精濃度 4.8%。",
+    "officialSource": "https://www.damm.com/en/beers/inedit"
   }
 ]

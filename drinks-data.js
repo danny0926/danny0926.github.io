@@ -12,20 +12,19 @@
   window.renderDrinkRadar = radar;
   if(!document.querySelector('.drink-categories'))return;
   fetch('data/drinks.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(items=>{
+    window.drinksCollection=items;
     Object.keys(labels).forEach(category=>{
       const section=document.getElementById(category),old=section.querySelector('.bottle-grid,.empty-shelf');old?.remove();const group=items.filter(x=>x.category===category);
       section.querySelector('.drink-heading span').textContent=category.toUpperCase()+' / '+String(group.length).padStart(2,'0');
       const link=document.querySelector('.drink-categories a[href="#'+category+'"]');link.textContent=link.textContent.split(' · ')[0]+' · '+group.length;
       const grid=node('div','', 'bottle-grid');section.append(grid);
       group.forEach(item=>{
-        const card=node('article','','bottle'),figure=node('figure','','bottle-photo'),img=node('img');
+        const card=node('article','','bottle');card.dataset.drinkId=item.id;card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',item.name);const figure=node('figure','','bottle-photo'),img=node('img');
         const safeURL=v=>{try {const u=new URL(v,location.href);return ['http:','https:'].includes(u.protocol);}catch{return false;}};
         if(safeURL(item.image)){img.src=item.image;img.alt=item.name;img.loading='lazy';figure.append(img);}
         if(safeURL(item.source)){const credit=node('a','圖片來源 ↗','photo-credit');credit.href=item.source;credit.target='_blank';credit.rel='noopener noreferrer';figure.append(credit);}
         const body=node('div','','bottle-body');body.append(node('span',String(items.indexOf(item)+1).padStart(2,'0'),'bottle-number mono'),node('h3',item.name),node('p',item.description),node('span',item.spec,'bottle-spec mono'));
-        if(item.notes){const n=node('p',item.notes,'tasting-notes');n.style.cssText='margin-top:18px;white-space:pre-line';body.append(n);}
-        if(Array.isArray(item.scores)&&item.scores.length===labels[category].length&&item.scores.every(v=>Number.isFinite(v)&&v>=0&&v<=5)){body.append(node('p','我的品飲感受 · 0–5 表示強度'));body.append(radar(item.scores,labels[category]));}
-        card.append(figure,body);grid.append(card);
+        body.append(node('span','DETAILS / 開啟品飲手記 ↗','bottle-open'));card.append(figure,body);grid.append(card);
       });
       if(!group.length)section.append(node('p','下一瓶的故事，留在這裡。','empty-shelf'));
     });
