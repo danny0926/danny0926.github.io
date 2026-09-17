@@ -1,1 +1,3 @@
 .traffic-counter{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;padding:18px 6% 24px;background:var(--bg);color:var(--muted);font:11px var(--mono);border-top:1px solid var(--line)}.traffic-counter a{color:var(--muted);text-decoration:none;display:flex;align-items:center;min-height:32px}.traffic-counter a:hover{color:var(--accent)}.traffic-value{display:flex;align-items:center;min-height:20px}.traffic-value img{display:block;max-width:100%}
+
+.site-header .admin-entry{color:var(--accent);font-size:12px;white-space:nowrap;border:1px solid var(--line);padding:9px 12px;text-decoration:none;min-height:40px;display:flex;align-items:center}.site-header .admin-entry:hover{border-color:var(--accent)}
