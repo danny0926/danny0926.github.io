@@ -1,0 +1,134 @@
+[
+  {
+    "id": "sake-1",
+    "category": "sake",
+    "name": "獺祭",
+    "description": "純米大吟醸 · 磨き二割三分",
+    "spec": "720 ml",
+    "image": "assets/drinks/dassai23.jpg",
+    "source": "https://dassai.com/product/main/23.html",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "sake-2",
+    "category": "sake",
+    "name": "獺祭 · 早田",
+    "description": "二割三分 · 純米大吟釀",
+    "spec": "",
+    "image": "assets/drinks/dassai-hayata.jpg",
+    "source": "https://dassai.com/product/main/hayata.html",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "sake-3",
+    "category": "sake",
+    "name": "獺祭 · 三割九分",
+    "description": "純米大吟釀",
+    "spec": "",
+    "image": "assets/drinks/dassai39.jpg",
+    "source": "https://dassai.com/product/main/39.html",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "sake-4",
+    "category": "sake",
+    "name": "庭の鶯 · 白鶯",
+    "description": "雫搾り · 純米大吟釀",
+    "spec": "720 ml",
+    "image": "assets/drinks/shiro-uguisu.jpg",
+    "source": "https://onosaketen.jp/view/item/000000000705",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "sake-5",
+    "category": "sake",
+    "name": "菊美人 · 光華",
+    "description": "",
+    "spec": "720 ml",
+    "image": "assets/drinks/kohka.webp",
+    "source": "https://kikubijin.co.jp/sake/kohka/",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "sake-6",
+    "category": "sake",
+    "name": "喜多屋 · 極釀",
+    "description": "大吟釀",
+    "spec": "720 ml",
+    "image": "assets/drinks/kitaya.jpg",
+    "source": "https://kitaya.biz/shop/products/12735",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "sake-7",
+    "category": "sake",
+    "name": "玉乃光 · BLACK LABEL",
+    "description": "純米大吟釀 · 黑瓶黑盒",
+    "spec": "720 ml",
+    "image": "assets/drinks/tamanohikari-black.jpg",
+    "source": "https://ec.tamanohikari.co.jp/products/blacklabel",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "sake-8",
+    "category": "sake",
+    "name": "楯野川 · 十八（じゅうはち）",
+    "description": "純米大吟醸 · 雪女神 · 精米步合 18%",
+    "spec": "",
+    "image": "assets/drinks/tatenokawa18.png",
+    "source": "https://shop.tatenokawa.com/shop/products/4511802017807",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "baijiu-1",
+    "category": "baijiu",
+    "name": "舍得酒 · 泰安古釀",
+    "description": "免稅通路限定 · 香港機場購入",
+    "spec": "52% · 500 ml",
+    "image": "assets/drinks/shede-taian.jpg",
+    "source": "https://www.dutyzero.com.hk/item/p15772999",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "awamori-1",
+    "category": "awamori",
+    "name": "宮之鶴 · みやのつる",
+    "description": "仲間酒造 · 泡盛 · 三合瓶",
+    "spec": "30% · 600 ml",
+    "image": "assets/drinks/miyanotsuru.jpg",
+    "source": "https://store.shopping.yahoo.co.jp/awamoriya/302.html",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "awamori-2",
+    "category": "awamori",
+    "name": "殘波 PREMIUM 古酒",
+    "description": "泡盛",
+    "spec": "",
+    "image": "assets/drinks/zanpa-blue.png",
+    "source": "https://www.zanpa.co.jp/%E8%A4%87%E8%A3%BD-zanpa-white-new-1",
+    "notes": "",
+    "scores": null
+  },
+  {
+    "id": "beer-1",
+    "category": "beer",
+    "name": "西班牙金星啤酒 · Inedit Damm",
+    "description": "麥芽與小麥調和的佐餐啤酒 · 西班牙",
+    "spec": "750 ml · 4.8%",
+    "image": "assets/drinks/inedit.png",
+    "source": "https://www.damm.com/en/beers/inedit",
+    "notes": "",
+    "scores": null
+  }
+]

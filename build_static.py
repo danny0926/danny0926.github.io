@@ -9,4 +9,7 @@ for pattern in ('*.html', '*.css', '*.js', '*.jsx'):
     for source in root.glob(pattern):
         shutil.copy2(source, out / source.name)
 shutil.copytree(root / 'assets', out / 'assets', dirs_exist_ok=True)
+for folder in ('data', 'admin'):
+    if (root / folder).exists():
+        shutil.copytree(root / folder, out / folder, dirs_exist_ok=True)
 print('Static website prepared: dist/')

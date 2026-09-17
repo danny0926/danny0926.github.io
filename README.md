@@ -48,3 +48,8 @@ python -m http.server 8767 --bind 127.0.0.1
 https://danny0926.github.io/
 
 Push to main automatically builds and deploys the static site through .github/workflows/pages.yml.
+
+
+## Drinks admin
+
+Open https://danny0926.github.io/admin/. Create a fine-grained GitHub token for danny0926.github.io only, with Contents read/write. Enter it in the admin page, never commit or send the token in chat. The token stays in tab memory. Edit entries, save drafts, then publish. JSON and uploaded images are committed together and trigger Pages deployment. Drafts are not persistent; export JSON before leaving (keep original unuploaded images separately). Canonical drinks data lives in data/drinks.json; drinks.html remains a fallback snapshot.
