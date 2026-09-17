@@ -1,4 +1,5 @@
 (() => {
+  const overview=document.querySelector('.cabinet-overview');if(overview){const compact=matchMedia('(max-width:750px)');const sync=()=>overview.open=!compact.matches;sync();compact.addEventListener('change',sync);}
   const labels = {sake:['香氣','甜感','酸感','旨味','酒體','餘韻'],beer:['麥芽','啤酒花','苦味','酒體','氣泡'],whisky:['果香','麥芽','木質','煙燻','香料'],baijiu:['香氣','甜感','酒體','酒精刺激','餘韻'],awamori:['香氣','甜感','酒體','酒精刺激','餘韻']};
   window.drinkAxes = labels;
   function node(tag, text, cls) {const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;}
@@ -15,8 +16,9 @@
     window.drinksCollection=items;
     Object.keys(labels).forEach(category=>{
       const section=document.getElementById(category),old=section.querySelector('.bottle-grid,.empty-shelf');old?.remove();const group=items.filter(x=>x.category===category);
+      section.hidden=!group.length;
       section.querySelector('.drink-heading span').textContent=category.toUpperCase()+' / '+String(group.length).padStart(2,'0');
-      const link=document.querySelector('.drink-categories a[href="#'+category+'"]');link.textContent=link.textContent.split(' · ')[0]+' · '+group.length;
+      const link=document.querySelector('.drink-categories a[href="#'+category+'"]');link.hidden=!group.length;link.replaceChildren();const categoryNames={sake:'清酒',beer:'啤酒',whisky:'威士忌',baijiu:'白酒',awamori:'燒酎・泡盛'};link.append(node('span',category.toUpperCase(),'category-code'),node('strong',categoryNames[category]),node('span',group.length+' 款收藏','category-count'));
       const grid=node('div','', 'bottle-grid');section.append(grid);
       group.forEach(item=>{
         const card=node('article','','bottle');card.dataset.drinkId=item.id;card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',item.name);const figure=node('figure','','bottle-photo'),img=node('img');
