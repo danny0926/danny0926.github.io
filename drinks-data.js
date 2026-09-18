@@ -29,6 +29,6 @@
       });
       if(!group.length)section.append(node('p','下一瓶的故事，留在這裡。','empty-shelf'));
     });
-    document.querySelector('.collection-count').firstChild.textContent=items.length;
+    const count=document.querySelector('.collection-count');if(count?.firstChild)count.firstChild.textContent=items.length;
   }).catch(()=>{/* Preserve the existing static collection on network failure. */});
 })();
