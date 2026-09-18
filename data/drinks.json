@@ -153,7 +153,13 @@
     "image": "assets/drinks/inedit.png",
     "source": "https://www.damm.com/en/beers/inedit",
     "notes": "",
-    "scores": null,
+    "scores": [
+      5,
+      3,
+      1,
+      3,
+      2
+    ],
     "officialSummary": "由 Damm 釀酒團隊與 Ferran Adrià、elBulli 侍酒師團隊共同開發。\n結合大麥麥芽與小麥啤酒，加入芫荽、甘草與橙皮。\n定位為搭配餐食的啤酒，酒精濃度 4.8%。",
     "officialSource": "https://www.damm.com/en/beers/inedit"
   }
