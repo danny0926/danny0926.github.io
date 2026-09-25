@@ -61,9 +61,17 @@
     "image": "assets/drinks/kohka.webp",
     "source": "https://kikubijin.co.jp/sake/kohka/",
     "notes": "",
-    "scores": null,
+    "scores": [
+      5,
+      2,
+      0,
+      5,
+      5,
+      5
+    ],
     "officialSummary": "酒藏定位為品牌頂級酒款。\n描述為馥郁香氣、豐富甜感與乾淨且持續的餘韻。",
-    "officialSource": "https://kikubijin.co.jp/sake/kohka/"
+    "officialSource": "https://kikubijin.co.jp/sake/kohka/",
+    "notesHtml": "<p><br></p>"
   },
   {
     "id": "sake-6",
