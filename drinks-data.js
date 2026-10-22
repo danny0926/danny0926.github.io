@@ -2,6 +2,39 @@
   const labels = {sake:['香氣','甜感','酸感','旨味','酒體','餘韻'],beer:['麥芽','啤酒花','苦味','酒體','氣泡'],whisky:['果香','麥芽','木質','煙燻','香料'],baijiu:['香氣','甜感','酒體','酒精刺激','餘韻'],awamori:['香氣','甜感','酒體','酒精刺激','餘韻']};
   window.drinkAxes = labels;
   function node(tag, text, cls) {const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;}
+  window.drinkAxisPool = ['香氣','果香','花香','米香','麥芽','甜感','酸感','苦味','旨味','酒體','順口','乾淨','礦物感','酒精感','氣泡','木質','煙燻','香料','餘韻'];
+  const validRadar = r => Array.isArray(r) && r.length >= 3 && r.every(x => x && typeof x.label === 'string' && x.label.trim() && Number.isFinite(x.value) && x.value >= 0 && x.value <= 5);
+  window.drinkRadarOf = item => {
+    if (validRadar(item.radar)) return item.radar;
+    const axes = labels[item.category];
+    if (axes && Array.isArray(item.scores) && item.scores.length === axes.length && item.scores.every(v => Number.isFinite(v) && v >= 0 && v <= 5)) return axes.map((a, i) => ({label: a, value: item.scores[i]}));
+    return null;
+  };
+  window.drinkRadarEditor = item => {
+    const root = node('div', '', 'radar-picker'), rows = [];
+    const current = window.drinkRadarOf(item) || [];
+    const addRow = (label, value, checked) => {
+      const row = node('label', '', 'radar-row'), box = node('input'), name = node('span', label), num = node('input');
+      box.type = 'checkbox'; box.checked = checked; num.type = 'number'; num.min = 0; num.max = 5; num.step = 1; num.value = value; num.disabled = !checked; num.setAttribute('aria-label', label + ' 分數');
+      box.onchange = () => { num.disabled = !box.checked; };
+      row.append(box, name, num); root.insertBefore(row, adder); rows.push({label, box, num});
+    };
+    const adder = node('div', '', 'radar-add'), input = node('input'), btn = node('button', '新增自訂項目');
+    input.placeholder = '自訂項目，例如：蜜香'; input.maxLength = 12; btn.type = 'button';
+    const add = () => { const t = input.value.trim(); if (!t || rows.some(r => r.label === t)) return; addRow(t, 0, true); input.value = ''; };
+    btn.onclick = add; input.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); add(); } };
+    adder.append(input, btn); root.append(adder);
+    const hint = node('p', '勾選要用的項目並填 0–5 分，至少 3 項才會畫出雷達圖。', 'detail-muted'); root.prepend(hint);
+    const pool = window.drinkAxisPool, known = new Map(current.map(x => [x.label, x.value]));
+    pool.forEach(a => addRow(a, known.get(a) ?? 0, known.has(a)));
+    current.filter(x => !pool.includes(x.label)).forEach(x => addRow(x.label, x.value, true));
+    return {el: root, value() {
+      const picked = rows.filter(r => r.box.checked).map(r => ({label: r.label, value: Number(r.num.value)}));
+      if (picked.length < 3) throw Error('雷達圖至少要選 3 個項目。');
+      if (picked.some(x => !Number.isInteger(x.value) || x.value < 0 || x.value > 5)) throw Error('分數請填入 0～5 的整數。');
+      return picked;
+    }};
+  };
   function radar(values, axes) {
     const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 300 280');svg.setAttribute('role','img');svg.setAttribute('aria-label',axes.map((a,i)=>a+' '+values[i]+'/5').join('，'));
     const point=(i,r)=>[150+Math.sin(i*2*Math.PI/axes.length)*r,140-Math.cos(i*2*Math.PI/axes.length)*r];
