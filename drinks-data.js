@@ -2,7 +2,14 @@
   const labels = {sake:['香氣','甜感','酸感','旨味','酒體','餘韻'],beer:['麥芽','啤酒花','苦味','酒體','氣泡'],whisky:['果香','麥芽','木質','煙燻','香料'],baijiu:['香氣','甜感','酒體','酒精刺激','餘韻'],awamori:['香氣','甜感','酒體','酒精刺激','餘韻']};
   window.drinkAxes = labels;
   function node(tag, text, cls) {const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;}
-  window.drinkAxisPool = ['香氣','果香','花香','米香','麥芽','甜感','酸感','苦味','旨味','酒體','順口','乾淨','礦物感','酒精感','氣泡','木質','煙燻','香料','餘韻'];
+  window.drinkAxisGroups = [
+    ['香氣', ['香氣','果香','花香','米香／穀物香','堅果','草本','發酵／乳香','木質／橡木']],
+    ['味覺', ['甜感','酸感','苦味','旨味','鹹感／礦物感','澀感']],
+    ['口感', ['酒體','濃淡','順口','圓潤綿密','酒精感','刺激／辛辣','氣泡']],
+    ['收尾', ['餘韻','爽脆（キレ）','乾淨','平衡']],
+    ['風味特色', ['煙燻／泥煤','香料','焦糖／蜂蜜','香草','麥芽','啤酒花']]
+  ];
+  window.drinkAxisPool = window.drinkAxisGroups.flatMap(g => g[1]);
   const validRadar = r => Array.isArray(r) && r.length >= 3 && r.every(x => x && typeof x.label === 'string' && x.label.trim() && Number.isFinite(x.value) && x.value >= 0 && x.value <= 5);
   window.drinkRadarOf = item => {
     if (validRadar(item.radar)) return item.radar;
@@ -11,13 +18,14 @@
     return null;
   };
   window.drinkRadarEditor = item => {
-    const root = node('div', '', 'radar-picker'), rows = [];
+    const root = node('div', '', 'radar-picker'), rows = [], boxes = new Map();
     const current = window.drinkRadarOf(item) || [];
-    const addRow = (label, value, checked) => {
+    const addRow = (label, value, checked, group = '自訂') => {
+      if (!boxes.has(group)) { const g = node('div', '', 'radar-group'); g.append(node('h4', group)); const grid = node('div', '', 'radar-grid'); g.append(grid); boxes.set(group, grid); root.insertBefore(g, adder); }
       const row = node('label', '', 'radar-row'), box = node('input'), name = node('span', label), num = node('input');
       box.type = 'checkbox'; box.checked = checked; num.type = 'number'; num.min = 0; num.max = 5; num.step = 1; num.value = value; num.disabled = !checked; num.setAttribute('aria-label', label + ' 分數');
       box.onchange = () => { num.disabled = !box.checked; };
-      row.append(box, name, num); root.insertBefore(row, adder); rows.push({label, box, num});
+      row.append(box, name, num); boxes.get(group).append(row); rows.push({label, box, num});
     };
     const adder = node('div', '', 'radar-add'), input = node('input'), btn = node('button', '新增自訂項目');
     input.placeholder = '自訂項目，例如：蜜香'; input.maxLength = 12; btn.type = 'button';
@@ -26,7 +34,7 @@
     adder.append(input, btn); root.append(adder);
     const hint = node('p', '勾選要用的項目並填 0–5 分，至少 3 項才會畫出雷達圖。', 'detail-muted'); root.prepend(hint);
     const pool = window.drinkAxisPool, known = new Map(current.map(x => [x.label, x.value]));
-    pool.forEach(a => addRow(a, known.get(a) ?? 0, known.has(a)));
+    window.drinkAxisGroups.forEach(([g, list]) => list.forEach(a => addRow(a, known.get(a) ?? 0, known.has(a), g)));
     current.filter(x => !pool.includes(x.label)).forEach(x => addRow(x.label, x.value, true));
     return {el: root, value() {
       const picked = rows.filter(r => r.box.checked).map(r => ({label: r.label, value: Number(r.num.value)}));
