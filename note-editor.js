@@ -28,11 +28,25 @@
     for(const path of item.noteImages||[]){if(safeURL(path)){const img=document.createElement('img');img.src=path;img.alt='筆記照片';content.append(img);}}
     parent.append(content);
   }
-  function editor(textarea,item,message){
+  const types={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'};
+  async function prepare(file){
+    const name=file.name||'圖片';
+    if(types[file.type]&&file.size<=1.5*1024*1024)return file;
+    if(!file.type.startsWith('image/'))throw Error(name+'：不是圖片檔。');
+    let bitmap;try{bitmap=await createImageBitmap(file);}catch{throw Error(name+'：瀏覽器無法讀取此格式（'+(file.type||'未知')+'），請先轉成 JPEG 或 PNG。');}
+    const scale=Math.min(1,2000/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);
+    const g=canvas.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,canvas.width,canvas.height);g.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close?.();
+    const blob=await new Promise(r=>canvas.toBlob(r,'image/jpeg',.88));
+    if(!blob||blob.size>5*1024*1024)throw Error(name+'：壓縮後仍超過 5 MB。');
+    return new File([blob],name.replace(/\.\w+$/,'')+'.jpg',{type:'image/jpeg'});
+  }
+  function editor(textarea,item,notify){
     const wrapper=document.createElement('section');wrapper.className='rich-note';
     const title=document.createElement('h3');title.textContent='我的品飲筆記';
     const toolbar=document.createElement('div');toolbar.className='note-toolbar';toolbar.setAttribute('role','toolbar');toolbar.setAttribute('aria-label','筆記排版');
     const area=document.createElement('div');area.className='note-content note-editable';area.contentEditable='true';area.setAttribute('role','textbox');area.setAttribute('aria-multiline','true');area.setAttribute('aria-label','我的品飲筆記');
+    const notice=document.createElement('p');notice.className='detail-muted note-notice';notice.setAttribute('role','status');notice.setAttribute('aria-live','polite');
+    const message=t=>{notice.textContent=t;notify(t);};
     const hint=document.createElement('p');hint.className='detail-muted';hint.textContent='像寫筆記一樣自由排版；在游標位置貼上或插入圖片。點選照片可調整大小或移除。';
     const initial=document.createElement('div');render(initial,item);area.innerHTML=initial.firstChild.innerHTML;
     if(!item.notes&&!item.notesHtml)area.innerHTML='<p><br></p>';
@@ -51,7 +65,7 @@
     area.onclick=e=>{selectedImage=e.target.closest('img');imageTools.hidden=!selectedImage;};
     async function add(files){
       restore();const insertion=window.getSelection().getRangeAt(0).cloneRange();pending++;area.contentEditable='false';
-      try{for(const file of files){const ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[file.type];if(!ext||file.size>5*1024*1024){message('圖片需為 5 MB 以下的 JPEG、PNG 或 WebP。');continue;}
+      try{for(const original of files){let file;try{file=await prepare(original);}catch(e){message(e.message);continue;}const ext=types[file.type];
         const dataURL=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('圖片讀取失敗，請再試一次。'));reader.readAsDataURL(file);});
         const path='assets/drinks/uploads/'+crypto.randomUUID()+'.'+ext;uploads.set(path,{path,base64:dataURL.split(',')[1]});
         const img=document.createElement('img');img.src=dataURL;img.alt=file.name||'筆記照片';img.dataset.upload=path;img.dataset.size='full';
@@ -63,7 +77,7 @@
     area.addEventListener('paste',e=>{e.preventDefault();remember();const files=[...(e.clipboardData?.items||[])].filter(x=>x.kind==='file'&&x.type.startsWith('image/')).map(x=>x.getAsFile()).filter(Boolean);if(files.length){add(files);return;}restore();const html=e.clipboardData.getData('text/html');if(html)document.execCommand('insertHTML',false,clean(html));else document.execCommand('insertText',false,e.clipboardData.getData('text/plain'));remember();});
     area.addEventListener('dragover',e=>e.preventDefault());
     area.addEventListener('drop',e=>{e.preventDefault();if(pending)return;const caret=document.caretRangeFromPoint?.(e.clientX,e.clientY);if(caret&&area.contains(caret.startContainer))selection=caret;const files=[...(e.dataTransfer?.files||[])];if(files.length)add(files);});
-    wrapper.append(title,toolbar,hint,imageTools,area,upload);textarea.parentElement.replaceWith(wrapper);
+    wrapper.append(title,toolbar,hint,notice,imageTools,area,upload);textarea.parentElement.replaceWith(wrapper);
     return {get pending(){return pending;},snapshot(){const copy=area.cloneNode(true),used=[];copy.querySelectorAll('img[data-upload]').forEach(img=>{const file=uploads.get(img.dataset.upload);if(file){img.setAttribute('src',file.path);used.push(file);}img.removeAttribute('data-upload');});return {html:clean(copy.innerHTML),text:area.innerText.trim(),uploads:used};}};
   }
   window.drinkNoteEditor={render,editor};
