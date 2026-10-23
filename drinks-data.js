@@ -2,6 +2,7 @@
   const labels = {sake:['香氣','甜感','酸感','旨味','酒體','餘韻'],beer:['麥芽','啤酒花','苦味','酒體','氣泡'],whisky:['果香','麥芽','木質','煙燻','香料'],baijiu:['香氣','甜感','酒體','酒精刺激','餘韻'],awamori:['香氣','甜感','酒體','酒精刺激','餘韻']};
   window.drinkAxes = labels;
   function node(tag, text, cls) {const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;}
+  const safeURL=v=>{if(typeof v!=='string'||!v.trim())return false;try {const u=new URL(v,location.href);return ['http:','https:'].includes(u.protocol);}catch{return false;}};
   window.drinkAxisGroups = [
     ['香氣', ['香氣','果香','花香','米香／穀物香','堅果','草本','發酵／乳香','木質／橡木']],
     ['味覺', ['甜感','酸感','苦味','旨味','鹹感／礦物感','澀感']],
@@ -54,6 +55,16 @@
   if(!document.querySelector('.drink-categories'))return;
   fetch('data/drinks.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(window.renderDrinks=items=>{
     window.drinksCollection=items;
+    const shelf=document.querySelector('.cabinet-shelf');
+    if(shelf){
+      shelf.replaceChildren();
+      items.forEach(item=>{
+        const link=node('a','','cabinet-slot');link.href='#drink-'+item.id;link.setAttribute('aria-label','\u67e5\u770b '+item.name);
+        const holder=node('span','','cabinet-bottle');if(safeURL(item.image)){const img=node('img');img.src=item.image;img.alt='';img.loading='lazy';img.decoding='async';holder.append(img);}else holder.append(node('span','\u7121\u5716\u7247','cabinet-no-photo'));
+        link.append(holder,node('span',item.name,'cabinet-name'));shelf.append(link);
+      });
+      const total=document.querySelector('.cabinet-total');if(total)total.firstChild.textContent=String(items.length).padStart(2,'0')+' ';
+    }
     Object.keys(labels).forEach(category=>{
       const section=document.getElementById(category),old=section.querySelector('.bottle-grid,.empty-shelf');old?.remove();const group=items.filter(x=>x.category===category);
       section.hidden=!group.length;
@@ -61,8 +72,7 @@
       const link=document.querySelector('.drink-categories a[href="#'+category+'"]');link.hidden=!group.length;link.replaceChildren();const categoryNames={sake:'清酒',beer:'啤酒',whisky:'威士忌',baijiu:'白酒',awamori:'燒酎・泡盛'};link.append(node('span',category.toUpperCase(),'category-code'),node('strong',categoryNames[category]),node('span',group.length+' 款收藏','category-count'));
       const grid=node('div','', 'bottle-grid');section.append(grid);
       group.forEach(item=>{
-        const card=node('article','','bottle');card.dataset.drinkId=item.id;card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',item.name);const figure=node('figure','','bottle-photo'),img=node('img');
-        const safeURL=v=>{try {const u=new URL(v,location.href);return ['http:','https:'].includes(u.protocol);}catch{return false;}};
+        const card=node('article','','bottle');card.id='drink-'+item.id;card.dataset.drinkId=item.id;card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',item.name);const figure=node('figure','','bottle-photo'),img=node('img');
         if(safeURL(item.image)){img.src=item.image;img.alt=item.name;img.loading='lazy';figure.append(img);}
         if(safeURL(item.source)){const credit=node('a','圖片來源 ↗','photo-credit');credit.href=item.source;credit.target='_blank';credit.rel='noopener noreferrer';figure.append(credit);}
         const body=node('div','','bottle-body');body.append(node('span',String(items.indexOf(item)+1).padStart(2,'0'),'bottle-number mono'),node('h3',item.name),node('p',item.description),node('span',item.spec,'bottle-spec mono'));
@@ -71,5 +81,12 @@
       if(!group.length)section.append(node('p','下一瓶的故事，留在這裡。','empty-shelf'));
     });
     const count=document.querySelector('.collection-count');if(count?.firstChild)count.firstChild.textContent=items.length;
+    revealDrinkHash();
   }).catch(()=>{/* Preserve the existing static collection on network failure. */});
+  function revealDrinkHash(){
+    let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}if(!id.startsWith('drink-'))return;
+    const target=document.getElementById(id);if(!target)return;
+    requestAnimationFrame(()=>{target.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});target.focus({preventScroll:true});});
+  }
+  window.addEventListener('hashchange',revealDrinkHash);
 })();
