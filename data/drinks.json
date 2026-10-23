@@ -184,12 +184,38 @@
     "category": "awamori",
     "name": "由布のしずく",
     "description": "麥燒酎 · 湯布院限定",
-    "spec": "",
+    "spec": "720 ml",
     "image": "assets/drinks/yufu-no-shizuku.jpg",
     "source": "https://www.google.com/maps/search/?api=1&query=由布のしずく+湯布院",
-    "notes": "",
-    "scores": null,
-    "officialSummary": "",
-    "officialSource": ""
+    "notes": "第一次嘗試的麥燒酎，與常聽到的芋燒酎又有很大不同。\n\n這支入口後首先品嘗到的是麥香，隨後麥香的尾韻會與酒體混和，感受到類似泥煤的香味，還以為再喝威士忌。\n\n還以為日本酒類都會以清香、順口為主軸，著實讓我驚豔。\n\n而且網路上還找不到通販，真是買對了(？",
+    "officialSummary": "網路上找不到官方說明，我圖片都是從google map上摳出來的",
+    "officialSource": "https://share.google/e8MkNeLjX9GmItrfr",
+    "notesHtml": "<p>第一次嘗試的麥燒酎，與常聽到的芋燒酎又有很大不同。</p><p>這支入口後首先品嘗到的是麥香，隨後麥香的尾韻會與酒體混和，感受到類似泥煤的香味，還以為再喝威士忌。</p><p>還以為日本酒類都會以清香、順口為主軸，著實讓我驚豔。</p><p>而且網路上還找不到通販，真是買對了(？</p>",
+    "radar": [
+      {
+        "label": "堅果",
+        "value": 3
+      },
+      {
+        "label": "苦味",
+        "value": 2
+      },
+      {
+        "label": "鹹感／礦物感",
+        "value": 3
+      },
+      {
+        "label": "順口",
+        "value": 2
+      },
+      {
+        "label": "刺激／辛辣",
+        "value": 4
+      },
+      {
+        "label": "煙燻／泥煤",
+        "value": 3
+      }
+    ]
   }
 ]
